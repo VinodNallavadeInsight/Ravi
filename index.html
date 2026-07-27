@@ -138,10 +138,6 @@ transition:background-color .3s ease, border-color .3s ease;
 }
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:0.2px;flex:0 0 auto;min-width:0;color:var(--topbar-brand);transition:color .3s ease;}
 .brand-logo{height:28px;width:auto;flex:0 0 auto;display:block;}
-/* Swap logo src based on theme */
-.brand-logo.logo-dark{display:none;}
-html.theme-dark .brand-logo.logo-light{display:none;}
-html.theme-dark .brand-logo.logo-dark{display:block;}
 .brand-text{background:var(--gradient-pink);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;}
 
 .pagenav{display:flex;gap:4px;background:var(--topbar-nav-bg);padding:4px;border-radius:999px;border:1px solid var(--topbar-nav-border);overflow-x:auto;flex:1 1 auto;min-width:0;-webkit-overflow-scrolling:touch;scrollbar-width:none;transition:background-color .3s ease, border-color .3s ease;}
@@ -440,7 +436,7 @@ color:var(--footer-text);padding:56px 48px 0;border-top:1px solid var(--footer-l
 
 @media (max-width: 420px){
 .brand{gap:6px;}
-.brand-logo{height:22px;}
+.brand-logo{height:20px;}
 .pagenav{gap:2px;}
 .pagenav button{padding:7px 10px;font-size:11.5px;}
 .cap-row{gap:14px;row-gap:18px;}
@@ -457,9 +453,10 @@ color:var(--footer-text);padding:56px 48px 0;border-top:1px solid var(--footer-l
 
 <div class="topbar">
 <div class="brand">
-<!-- Insight logo: light version for light theme, inverted for dark -->
-<img class="brand-logo logo-light" src="https://www.insight.com/content/dam/insight-web/en_US/logos/insight-logo.svg" alt="Insight" onerror="this.style.display='none'">
-<img class="brand-logo logo-dark" src="https://www.insight.com/content/dam/insight-web/en_US/logos/insight-logo-white.svg" alt="Insight" onerror="this.style.display='none';this.parentElement.querySelector('.logo-light').style.display='block';this.parentElement.querySelector('.logo-light').style.filter='brightness(0) invert(1)';">
+<svg class="brand-logo" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg" aria-label="Insight">
+  <text x="0" y="90" font-family="Sora, Arial, sans-serif" font-weight="800" font-size="96" fill="var(--topbar-brand)" letter-spacing="-2">insight</text>
+  <rect x="485" y="18" width="14" height="14" rx="3" fill="#D30E8C"/>
+</svg>
 <span class="brand-text">App &amp; Integration</span>
 </div>
 <div class="pagenav">
@@ -547,7 +544,7 @@ color:var(--footer-text);padding:56px 48px 0;border-top:1px solid var(--footer-l
 <p class="eyebrow">Success Stories</p>
 <h2>Delivering Real Business Impact</h2>
 </div>
-<button class="view-all">View All Case Studies →</button>
+
 </div>
 <div class="story-grid" id="storyGrid"></div>
 <div class="stat-bar" id="statBar"></div>
@@ -1053,7 +1050,7 @@ document.getElementById('storyGrid').innerHTML = featuredStories.map(s=>`
 <h4>${s.title}</h4><p>${s.desc}</p><span class="tag-pill">${s.tag}</span>
 </div>`).join('');
 
-const stats = [{icon:'users',value:'200+',label:'Projects Delivered'},{icon:'users',value:'50+',label:'Happy Clients'},{icon:'building',value:'10+',label:'Industries Served'},{icon:'star',value:'98%',label:'Client Satisfaction'}];
+const stats = [{icon:'users',value:'50+',label:'Projects Delivered'},{icon:'users',value:'25+',label:'Happy Clients'},{icon:'building',value:'10+',label:'Industries Served'},{icon:'star',value:'98%',label:'Client Satisfaction'}];
 document.getElementById('statBar').innerHTML = stats.map(s=>`
 <div class="stat"><div class="icon-tile">${ICONS[s.icon]}</div><div><b>${s.value}</b><span>${s.label}</span></div></div>`).join('');
 </script>
